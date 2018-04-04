@@ -1,24 +1,31 @@
-version: '3'
+version: '2'
 services:
-  backend:
-    container_name: horoscofox_server
-    build: ./horoscofox
-    depends_on:
-      - postgres
-    ports:
-      - 8000:8000
-    environment: 
-      SECRET_KEY: 123 
-      DEBUG: 'True' 
-      DATABASE_URL: postgres://horoscofoxdb@postgres/horoscofox 
-
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - ./horoscofox:/app/horoscofox
 
   postgres:
     container_name: horoscofox_database
     image: postgres:9.6.2-alpine
     environment:
-      POSTGRES_USER: horoscofoxdb
+      POSTGRES_USER: horoscofoxuser
       POSTGRES_DB: horoscofox
+      POSTGRES_PASSWORD: horoscopsw
+    ports:
+     - "5432:5432"
+   
+
+  backend:
+    container_name: horoscofox_server
+    build: ./horoscofox-service
+    depends_on:
+      - postgres
+    links:
+      - postgres
+    ports:
+      - 9001:9001
+    environment: 
+      SECRET_KEY: 123 
+      DEBUG: 'True' 
+      PYTHONUNBUFFERED: 0
+    entrypoint: ["/app/horoscofox-service/utils/entrypoint-wait-for-postgres.sh", "postgres", "--"]
+    command: ['/app/horoscofox-service/utils/pre-deploy-commands.sh']
+    volumes:
+      - ./horoscofox-service:/app/horoscofox-service
