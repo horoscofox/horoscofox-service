@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "8e38517524a78513fe8cd69575999301b36355192b1858d1c3da26b51b12f4ac"
+            "sha256": "62cfbcbf9199f31340573c8be19cca90bbbf4c4b69a4a404156e7c65682f0aa8"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -73,17 +73,15 @@
             "index": "pypi",
             "version": "==2.0.4"
         },
+        "f5ec833": {
+            "file": "https://github.com/horoscofox/pyhoroscofox/archive/master.zip"
+        },
         "gunicorn": {
             "hashes": [
                 "sha256:75af03c99389535f218cc596c7de74df4763803f7b63eb09d77e92b3956b36c6",
                 "sha256:eee1169f0ca667be05db3351a0960765620dad53f53434262ff8901b68a1b622"
             ],
             "version": "==19.7.1"
-        },
-        "horoscofox": {
-            "editable": true,
-            "git": "https://github.com/horoscofox/pyhoroscofox.git",
-            "ref": "04fbf3047dc6e6587e818782478d89cc50140563"
         },
         "httptools": {
             "hashes": [

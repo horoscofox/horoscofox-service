@@ -6,8 +6,8 @@ name = "pypi"
 [packages]
 apistar = {extras = ["asyncio"]}
 Django = "*"
+"f5ec833" = {file = "https://github.com/horoscofox/pyhoroscofox/archive/master.zip"}
 "psycopg2" = "*"
-horoscofox = {git = "https://github.com/horoscofox/pyhoroscofox.git", editable = true}
 
 [dev-packages]
 pytest = "*"

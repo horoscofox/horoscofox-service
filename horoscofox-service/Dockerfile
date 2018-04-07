@@ -15,14 +15,17 @@ RUN mkdir -p $SERVICE_DIR
 
 WORKDIR $SERVICE_DIR
 
+RUN pip install --upgrade pip
+
 COPY Pipfile Pipfile
 COPY Pipfile.lock Pipfile.lock
 
 RUN pip install -U pipenv
-RUN pipenv install --system --deploy
+RUN pipenv install --system  --deploy
 
 
 COPY . $SERVICE_DIR
+
 WORKDIR $SERVICE_SRC
 
 RUN chmod -R 775 $SERVICE_UTILS/
