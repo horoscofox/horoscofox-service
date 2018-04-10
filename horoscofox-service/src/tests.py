@@ -1,10 +1,16 @@
 from apistar.test import TestClient
 from app import app
-from src.views import generic_view
 
 
-def test_hello_world():
+def test_no_sign_no_kind():
     client = TestClient(app)
-    response = client.get('/virgo/')
+    response = client.get('/branko')
+    assert response.status_code == 400
+    assert response.json() == {"message": "Sorry but branko is away at the moment"}
+
+
+def test_no_kind():
+    client = TestClient(app)
+    response = client.get('/paolo/virgo')
     assert response.status_code == 400
     assert response.json() == {"message": "Sorry for virgo there's no results"}

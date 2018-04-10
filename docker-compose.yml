@@ -1,31 +1,30 @@
 version: '2'
 services:
 
-  postgres:
-    container_name: horoscofox_database
-    image: postgres:9.6.2-alpine
-    environment:
-      POSTGRES_USER: horoscofoxuser
-      POSTGRES_DB: horoscofox
-      POSTGRES_PASSWORD: horoscopsw
-    ports:
-     - "5432:5432"
-   
 
+  database:
+    image: mongo:latest
+    container_name: "mongodb"
+    environment:
+      - MONGODB_USER="astrologer" 
+      - MONGODB_PASS="owanesh_stagi_horoscofox"
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    ports:
+      - 27017:27017
+    command: -smallfiles -nojournal
+    
   backend:
-    container_name: horoscofox_server
+    container_name: apistar
     build: ./horoscofox-service
     depends_on:
-      - postgres
+      - database
     links:
-      - postgres
+      - database
     ports:
       - 9001:9001
     environment: 
-      SECRET_KEY: 123 
-      DEBUG: 'True' 
       PYTHONUNBUFFERED: 0
-    entrypoint: ["/app/horoscofox-service/utils/entrypoint-wait-for-postgres.sh", "postgres", "--"]
     command: ['/app/horoscofox-service/utils/pre-deploy-commands.sh']
     volumes:
       - ./horoscofox-service:/app/horoscofox-service
