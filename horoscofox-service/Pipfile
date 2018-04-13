@@ -4,9 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-apistar = {extras = ["asyncio"]}
 "f5ec833" = {file = "https://github.com/horoscofox/pyhoroscofox/archive/master.zip"}
 mongoengine = "*"
+apistar = "*"
 
 [dev-packages]
 

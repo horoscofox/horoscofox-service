@@ -1,9 +1,9 @@
 from urls import routes
-from apistar.frameworks.asyncio import ASyncIOApp as App
+from apistar import ASyncApp, Route
 
-app = App(
+app = ASyncApp(
     routes=routes
 )
 
 if __name__ == '__main__':
-    app.main()
+    app.serve('0.0.0.0', 9001, use_debugger=True, use_reloader=True)

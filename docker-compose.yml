@@ -25,6 +25,6 @@ services:
       - 9001:9001
     environment: 
       PYTHONUNBUFFERED: 0
-    command: ['/app/horoscofox-service/utils/pre-deploy-commands.sh']
+    command: ["python","app.py"]
     volumes:
       - ./horoscofox-service:/app/horoscofox-service

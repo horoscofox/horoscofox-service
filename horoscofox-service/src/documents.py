@@ -1,6 +1,6 @@
-from mongoengine import *
 import connection
 import datetime
+from mongoengine import *
 
 SIZE = (('BKO', 'Branko'),
         ('FOX', 'Paolo Fox'),
