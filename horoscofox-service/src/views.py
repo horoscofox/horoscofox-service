@@ -1,55 +1,56 @@
-from horoscofox import paolo, branko
 from horoscofox.errors import AstrologerException
 from documents import Horoscope
-import logger
 from apistar import http
-from utils import astrologer_modules, resetToMidnight, getDateStart
+from utils import (fromDocToJson)
+from managers import AstrologerManager as AManager, DateManager as DManager
 
-# Private methods
-def _checkAstrologer(astrologer):
-    try:
-        astrologer_module = astrologer_modules[astrologer][1]
-        return True
-    except Exception as ex:
-        return False
+DEFAULT_FIELDS_JSON = ['text', 'date_start', 'date_end']
 
 
 async def astrologer_root(astrologer: str) -> http.JSONResponse:
-    if _checkAstrologer(astrologer):
+    if AManager.is_valid_astrologer(astrologer):
         data = {'message': "Sorry but " +
                 astrologer + " is away at the moment"}
     else:
-        data = {'message': "No astrologer accepted"}
+        data = {'message': "No astrologer accepted!"}
     return http.JSONResponse(data, status_code=400)
 
 
 async def astrologer_sign(astrologer: str, sign: str) -> http.JSONResponse:
-    if _checkAstrologer(astrologer):
+    if AManager.is_valid_astrologer(astrologer):
         data = {'message': "Sorry but there is currently no horoscope of the " +
                 sign+" readed by "+astrologer}
     else:
-        data = {'message': "No astrologer accepted"}
+        data = {'message': "No astrologer accepted!"}
     return http.JSONResponse(data, status_code=400)
 
 
 async def sign_view(astrologer: str, sign: str, kind: str) -> http.JSONResponse:
-    if not _checkAstrologer(astrologer):
-        return http.JSONResponse({'message': "No astrologer accepted"}, status_code=400)
-    
-    astrologer_module = astrologer_modules[astrologer][1]
-    astrologer_cut = astrologer_modules[astrologer][0]
+    if not AManager.is_valid_astrologer(astrologer):
+        return http.JSONResponse({'message': "No astrologer accepted!"},
+                                 status_code=400)
+    if not AManager.is_valid_sign(sign):
+        return http.JSONResponse({'message': sign + " is not valid"},
+                                 status_code=400)
+
+    astrologer_module = AManager.get_astrologer(astrologer)
+    astr_uid = AManager.get_astrologer_uid(astrologer)
     try:
         horoscope = Horoscope.objects.get(sign=sign,
-                                          astrologer=astrologer_cut).json()
-        data = {'message': horoscope}
+                                          astrologer=astr_uid,
+                                          date_start=DManager.get_date(kind))
+        horoscope_jsn = fromDocToJson(horoscope, DEFAULT_FIELDS_JSON)
+        data = {'message': horoscope_jsn}
         return http.JSONResponse(data, status_code=200)
     except Exception as ex:
-        horo_api_resp = astrologer_module.get(sign, kind)
-        horoscope = Horoscope(text=horo_api_resp.text,
-                              date_start=getDateStart(kind),
-                              sign=sign, astrologer=astrologer_cut)
-        horoscope.date_start = resetToMidnight(horo_api_resp.date_start)
-        horoscope.date_end = resetToMidnight(horo_api_resp.date_end)
+        print(ex)
+        astro_api = astrologer_module.get(sign, kind)
+        mid_date_start = DManager.reset(astro_api.date_start)
+        mid_date_end = DManager.reset(astro_api.date_end)
+        horoscope = Horoscope(text=astro_api.text,
+                              date_start=mid_date_start,
+                              sign=sign, astrologer=astr_uid,
+                              date_end=mid_date_end)
         horoscope.save()
-        data = {'message': horo_api_resp.json()}
+        data = {'message': astro_api.json()}
         return http.JSONResponse(data, status_code=201)

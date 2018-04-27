@@ -16,3 +16,4 @@ class Horoscope(Document):
     meta = {
         'ordering': ['-date_start']
     }
+

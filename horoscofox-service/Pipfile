@@ -9,6 +9,12 @@ mongoengine = "*"
 apistar = "*"
 
 [dev-packages]
+pytest = "*"
+pytest-cov = "*"
+pytest-mock = "*"
+coverage = "*"
+codecov = "*"
+mongomock = "*"
 
 [requires]
 python_version = "3.6"
