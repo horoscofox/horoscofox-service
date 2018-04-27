@@ -1,15 +1,12 @@
 from urls import routes
-from apistar.frameworks.asyncio import ASyncIOApp as App
-from apistar.backends import django_orm
-from settings import settings
+from settings import (DEV_SERVER_ADDR, DEV_SERVER_PORT,
+                      DEV_USE_DEBUGGER, DEV_USE_RELOADER)
+from apistar import ASyncApp
 
-
-app = App(
-    routes=routes,
-    settings=settings,
-    commands=django_orm.commands,  # Install custom commands.
-    components=django_orm.components  # Install custom components.
+app = ASyncApp(
+    routes=routes
 )
 
 if __name__ == '__main__':
-    app.main()
+    app.serve(DEV_SERVER_ADDR, DEV_SERVER_PORT,
+              use_debugger=DEV_USE_DEBUGGER, use_reloader=DEV_USE_RELOADER)

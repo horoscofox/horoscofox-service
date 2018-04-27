@@ -4,13 +4,17 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-apistar = {extras = ["asyncio"]}
-Django = "*"
 "f5ec833" = {file = "https://github.com/horoscofox/pyhoroscofox/archive/master.zip"}
-"psycopg2" = "*"
+mongoengine = "*"
+apistar = "*"
 
 [dev-packages]
 pytest = "*"
+pytest-cov = "*"
+pytest-mock = "*"
+coverage = "*"
+codecov = "*"
+mongomock = "*"
 
 [requires]
 python_version = "3.6"

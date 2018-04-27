@@ -1,17 +1,60 @@
 <p align="center">
-    <h1>Horoscofox Service</h1>
+    <h1>Horoscofox Service 🦄 🌈</h1>
     <br>
 </p>
 
+## Start 💫
+
+### Start without docker
+We use [Pipenv](https://github.com/pypa/pipenv) to manage dependencies
+
+    pip install pipenv
+    cd horoscofox-service
+    pipenv install 
+
+Install MongoDB on your machine [see official docs](https://docs.mongodb.com/manual/administration/install-community/)
+
+Setup your Mongo connection in `horoscofox-service/settings.py`
+
+You can use sample settings 
+
+    cp horoscofox-service/settings.example.py horoscofox-service/settings.py
+
+### Start with docker 🐳
+*(we **strongly** recommend this way)*
+
+    docker-compose build
+    docker-compose up
 
 
 
-## How to start 🚀
+## APIs 🌍
+`<astrologer> / <sign> / <kind>`
 
-```sh
-docker-compose build
-docker-compose up
-```
+### Parameters
+**Astrologers** allowed are 
+
+`paolo`  `branko`  `fox`  `paolofox`
+
+**Signs** allowed are 
+
+`capricorn`  `aquarius`  `pisces`  `aries`  `taurus`  `gemini`  `cancer`  `leo`  `virgo`  `libra`  `scorpio`  `sagittarius`
+
+**Kinds** allowed *(at the moment)* are 
+
+`today` `tomorrow`
+
+## Tests 🐲
+**Using docker**
+
+    docker-compose run backend bash
+    . runtest.sh
+
+**Without docker**
+
+    . runtest.sh
+
+---
 
 #### For further information
 [pyhoroscofox](https://github.com/horoscofox/pyhoroscofox "pyhoroscofox"):  Python horoscope library
