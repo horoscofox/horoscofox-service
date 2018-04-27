@@ -2,7 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+IsolatedStorage/
 # C extensions
 *.so
 horoscofox-service/src/settings.py
