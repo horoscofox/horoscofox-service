@@ -16,6 +16,10 @@ Install MongoDB on your machine [see official docs](https://docs.mongodb.com/man
 
 Setup your Mongo connection in `horoscofox-service/settings.py`
 
+You can use sample settings 
+
+    cp horoscofox-service/settings.example.py horoscofox-service/settings.py
+
 ### Start with docker 🐳
 *(we **strongly** recommend this way)*
 
@@ -34,11 +38,21 @@ Setup your Mongo connection in `horoscofox-service/settings.py`
 
 **Signs** allowed are 
 
-`capricorn`  `acquarius`  `pisces`  `aries`  `taurus`  `gemini`  `cancer`  `leo`  `virgo`  `libra`  `scorpio`  `sagittarius`
+`capricorn`  `aquarius`  `pisces`  `aries`  `taurus`  `gemini`  `cancer`  `leo`  `virgo`  `libra`  `scorpio`  `sagittarius`
 
 **Kinds** allowed *(at the moment)* are 
 
 `today` `tomorrow`
+
+## Tests 🐲
+**Using docker**
+
+    docker-compose run backend bash
+    . runtest.sh
+
+**Without docker**
+
+    . runtest.sh
 
 ---
 
