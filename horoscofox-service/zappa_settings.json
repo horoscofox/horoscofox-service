@@ -1,0 +1,11 @@
+{
+    "dev": {
+        "app_function": "src.app.app",
+        "profile_name": "default",
+        "project_name": "horoscofox",
+        "runtime": "python3.6",
+        "s3_bucket": "horoscofox-zappa-s3",
+        "aws_region": "us-west-1",
+        "lambda_description": "Lambda function for Horoscofox API Service"
+}
+}

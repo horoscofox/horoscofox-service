@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta, date
 from horoscofox import paolo, branko
 from horoscofox.constants import SIGNS
+
 # Costants
 FOX_VAL = 'FOX'
 BKO_VAL = "BKO"
