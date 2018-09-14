@@ -1,7 +1,8 @@
-from managers import AstrologerManager as AMMock
+from src.managers.astrologer import AstrologerManager as AMMock
 from horoscofox import paolo, branko
 from datetime import datetime
-from managers import DateManager
+from src.managers.date import DateManager
+
 
 def test_get_astrologer_uid(mocker):
     assert AMMock.get_astrologer_uid('fox') == 'FOX'
@@ -28,7 +29,7 @@ def test_is_valid_astrologer(mocker):
 def test_get_date(mocker):
     date_arr = [datetime(2018, 5, 27, 0, 0).date(),
                 datetime(2018, 5, 28, 0, 0).date()]
-    mocker.patch('managers.DateManager.today', date_arr[0])
-    mocker.patch('managers.DateManager.tomorrow', date_arr[1])
+    mocker.patch('src.managers.DateManager.today', date_arr[0])
+    mocker.patch('src.managers.DateManager.tomorrow', date_arr[1])
 
     assert DateManager.reset(date_arr[0]) == datetime(2018, 5, 27, 0, 0)

@@ -1,11 +1,13 @@
-from urls import routes
-from settings import (DEV_SERVER_ADDR, DEV_SERVER_PORT,
+from .urls import routes
+from .settings import (DEV_SERVER_ADDR, DEV_SERVER_PORT,
                       DEV_USE_DEBUGGER, DEV_USE_RELOADER)
-from apistar import ASyncApp
+from apistar import App
+from apistar_cors_hooks import CORSRequestHooks
 
-app = ASyncApp(
-    routes=routes
-)
+custom_options = {"origin": "*"}
+event_hooks = [CORSRequestHooks(options=custom_options)]
+app = App(routes=routes, event_hooks=event_hooks)
+
 
 if __name__ == '__main__':
     app.serve(DEV_SERVER_ADDR, DEV_SERVER_PORT,

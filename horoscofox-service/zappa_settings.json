@@ -1,11 +1,23 @@
 {
     "dev": {
+        "apigateway_description": "Horoscofox API Gateway",
         "app_function": "src.app.app",
+        "aws_region": "us-west-1", // Where lambda function is
+        "binary_support": false,
+        "cors": {
+            "allowed_origin": "*"
+        },
+        "debug": false,
+        "delete_local_zip": true, 
+        "delete_s3_zip": true,
+        "lambda_description": "Lambda function for Horoscofox API Service",
+        "log_level": "INFO",
         "profile_name": "default",
         "project_name": "horoscofox",
         "runtime": "python3.6",
         "s3_bucket": "horoscofox-zappa-s3",
-        "aws_region": "us-west-1",
-        "lambda_description": "Lambda function for Horoscofox API Service"
-}
+        "touch": true,
+        "touch_path": "/",
+        "use_precompiled_packages": true
+    }
 }
