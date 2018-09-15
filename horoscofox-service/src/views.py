@@ -20,6 +20,12 @@ def welcome() -> http.JSONResponse:
     return http.JSONResponse(data, status_code=200)
 
 
+def python_pizza_2018() -> http.JSONResponse:
+    data = {
+        "Say": "Hello, i'm Owanesh!",
+    }
+    return http.JSONResponse(data, status_code=200)
+
 
 def astrologer_root(astrologer: str) -> http.JSONResponse:
     if AManager.is_valid_astrologer(astrologer):
