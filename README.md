@@ -62,6 +62,8 @@ We use [Pipenv](https://github.com/pypa/pipenv) to manage dependencies
 ---
 ### License
 Service used in this project are under these licence
+
+
 | Service            | Licence                                                                                     |
 |--------------------|---------------------------------------------------------------------------------------------|
 | Zappa              | [MIT](https://github.com/Miserlou/Zappa/blob/master/LICENSE)                                |
