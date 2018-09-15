@@ -1,9 +1,11 @@
 <p align="center">
     <h1>Horoscofox Service 🦄 🌈</h1>
     <br>
+     
 </p>
 
 ## Start 💫
+Visit demo at [https://horoscofox.github.io](https://horoscofox.github.io)
 
 ### Start without docker
 We use [Pipenv](https://github.com/pypa/pipenv) to manage dependencies
@@ -12,20 +14,13 @@ We use [Pipenv](https://github.com/pypa/pipenv) to manage dependencies
     cd horoscofox-service
     pipenv install 
 
-Install MongoDB on your machine [see official docs](https://docs.mongodb.com/manual/administration/install-community/)
-
-Setup your Mongo connection in `horoscofox-service/settings.py`
-
-You can use sample settings 
-
-    cp horoscofox-service/settings.example.py horoscofox-service/settings.py
-
+<!-- 
 ### Start with docker 🐳
 *(we **strongly** recommend this way)*
 
     docker-compose build
     docker-compose up
-
+-->
 
 
 ## APIs 🌍
@@ -45,11 +40,12 @@ You can use sample settings
 `today` `tomorrow`
 
 ## Tests 🐲
+<!--
 **Using docker**
 
     docker-compose run backend bash
     . runtest.sh
-
+-->
 **Without docker**
 
     . runtest.sh
@@ -58,3 +54,18 @@ You can use sample settings
 
 #### For further information
 [pyhoroscofox](https://github.com/horoscofox/pyhoroscofox "pyhoroscofox"):  Python horoscope library
+
+[Dynamo DB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html "Dynamo DB"):  Setup DynamoDB locally
+
+[Zappa on Docker](https://blog.zappa.io/posts/docker-zappa-and-python3 "Zappa"):  Allows you to have a local environment that can be used to debug package
+
+---
+### License
+Service used in this project are under these licence
+| Service            | Licence                                                                                     |
+|--------------------|---------------------------------------------------------------------------------------------|
+| Zappa              | [MIT](https://github.com/Miserlou/Zappa/blob/master/LICENSE)                                |
+| Apistar            | [BSD-3-Clause](https://github.com/encode/apistar/blob/master/LICENSE.md)                    |
+| Boto3              | [Apache 2.0](https://github.com/boto/boto3/blob/develop/LICENSE)                            |
+| Apistar Cors Hooks | [BSD 3-Clause](https://github.com/lucianoratamero/apistar_cors_hooks/blob/master/LICENSE)   |
+| Pyhoroscofox       | [MIT](https://github.com/horoscofox/pyhoroscofox/blob/master/LICENSE)                       |

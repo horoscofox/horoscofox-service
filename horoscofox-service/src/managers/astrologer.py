@@ -1,6 +1,6 @@
-from datetime import datetime, timedelta, date
 from horoscofox import paolo, branko
 from horoscofox.constants import SIGNS
+
 # Costants
 FOX_VAL = 'FOX'
 BKO_VAL = "BKO"
@@ -34,19 +34,3 @@ class AstrologerManager(object):
     @staticmethod
     def is_valid_sign(key):
         return key in SIGNS
-
-
-class DateManager(object):
-    today = date.today()
-    tomorrow = today+timedelta(days=1)
-
-    @staticmethod
-    def get_date(kind: str):
-        if kind == 'today':
-            return DateManager.reset(DateManager.today)
-        if kind == 'tomorrow':
-            return DateManager.reset(DateManager.tomorrow)
-
-    @staticmethod
-    def reset(date):
-        return datetime.combine(date, datetime.min.time())

@@ -5,16 +5,18 @@ name = "pypi"
 
 [packages]
 "f5ec833" = {file = "https://github.com/horoscofox/pyhoroscofox/archive/master.zip"}
-mongoengine = "*"
 apistar = "*"
+"boto3" = "*"
+zappa = "*"
+apistar-cors-hooks = "*"
+pip = "==10.0.0"
 
 [dev-packages]
 pytest = "*"
 pytest-cov = "*"
 pytest-mock = "*"
-coverage = "*"
 codecov = "*"
-mongomock = "*"
+aws-sam-cli = "*"
 
 [requires]
 python_version = "3.6"
