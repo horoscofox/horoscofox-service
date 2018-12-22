@@ -9,7 +9,7 @@ apistar = "*"
 "boto3" = "*"
 zappa = "*"
 apistar-cors-hooks = "*"
-pip = "==10.0.0"
+pip = "==18.1"
 
 [dev-packages]
 pytest = "*"
