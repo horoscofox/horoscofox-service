@@ -14,7 +14,7 @@
         "log_level": "INFO",
         "profile_name": "default",
         "project_name": "horoscofox",
-        "runtime": "python3.6",
+        "runtime": "python3.7",
         "s3_bucket": "horoscofox-zappa-s3",
         "touch": true,
         "touch_path": "/",

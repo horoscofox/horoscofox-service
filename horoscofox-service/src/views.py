@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from horoscofox.errors import AstrologerException
 from apistar import http
 from .managers.astrologer import AstrologerManager as AManager
@@ -62,9 +64,7 @@ def sign_view(astrologer: str, sign: str, kind: str) -> http.JSONResponse:
             "astrologer": astr_uid,
             "date_start": str(DManager.get_date(kind))
         }
-
         item = horoscope.get_item(search_item, format='json')
-
         data = {'message': item}
         print(data)
         return http.JSONResponse(data, status_code=200)

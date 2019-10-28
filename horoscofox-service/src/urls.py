@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from apistar import Route
 from .views import astrologer_root, astrologer_sign, sign_view, welcome, python_pizza_2018
 

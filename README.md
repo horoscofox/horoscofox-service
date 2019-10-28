@@ -37,7 +37,7 @@ We use [Pipenv](https://github.com/pypa/pipenv) to manage dependencies
 
 **Kinds** allowed *(at the moment)* are 
 
-`today` `tomorrow`
+`today` `tomorrow` `month` `info`
 
 ## Tests 🐲
 <!--

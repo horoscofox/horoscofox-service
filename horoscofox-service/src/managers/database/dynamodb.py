@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import boto3
 from src.settings import (DYNAMODB_TABLE_NAME, DYNAMODB_REGION)
 from src.managers.database.exceptions import InvalidHoroscopeFormat, InvalidHoroscopeAttribute
