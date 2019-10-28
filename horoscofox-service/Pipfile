@@ -1,15 +1,7 @@
 [[source]]
-url = "https://pypi.python.org/simple"
-verify_ssl = true
 name = "pypi"
-
-[packages]
-"f5ec833" = {file = "https://github.com/horoscofox/pyhoroscofox/archive/master.zip"}
-apistar = "*"
-"boto3" = "*"
-zappa = "*"
-apistar-cors-hooks = "*"
-pip = "==18.1"
+url = "https://pypi.org/simple"
+verify_ssl = true
 
 [dev-packages]
 pytest = "*"
@@ -17,6 +9,15 @@ pytest-cov = "*"
 pytest-mock = "*"
 codecov = "*"
 aws-sam-cli = "*"
+v = {editable = true,version = "*"}
+
+[packages]
+f5ec833 = {file = "https://github.com/horoscofox/pyhoroscofox/archive/master.zip"}
+"boto3" = "*"
+zappa = "*"
+apistar-cors-hooks = "*"
+pip = "==18.1"
+apistar = "==0.5.41"
 
 [requires]
-python_version = "3.6"
+python_version = "3.7"
