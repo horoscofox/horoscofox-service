@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from .urls import routes
 from .settings import (DEV_SERVER_ADDR, DEV_SERVER_PORT,
                       DEV_USE_DEBUGGER, DEV_USE_RELOADER)
