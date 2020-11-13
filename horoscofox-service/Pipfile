@@ -16,8 +16,8 @@ f5ec833 = {file = "https://github.com/horoscofox/pyhoroscofox/archive/master.zip
 "boto3" = "*"
 zappa = "*"
 apistar-cors-hooks = "*"
-pip = "==18.1"
+pip = "==20.4"
 apistar = "==0.5.41"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"
