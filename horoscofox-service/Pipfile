@@ -12,7 +12,7 @@ aws-sam-cli = "*"
 v = {editable = true,version = "*"}
 
 [packages]
-f5ec833 = {file = "https://github.com/horoscofox/pyhoroscofox/archive/master.zip"}
+horoscofox = {file = "https://github.com/horoscofox/pyhoroscofox/archive/master.zip"}
 "boto3" = "*"
 zappa = "*"
 apistar-cors-hooks = "*"

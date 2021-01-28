@@ -2,7 +2,7 @@
     "dev": {
         "apigateway_description": "Horoscofox API Gateway",
         "app_function": "src.app.app",
-        "aws_region": "us-west-1", // Where lambda function is
+        "aws_region": "eu-west-1", // Where lambda function is
         "binary_support": false,
         "cors": {
             "allowed_origin": "*"
@@ -15,7 +15,7 @@
         "profile_name": "default",
         "project_name": "horoscofox",
         "runtime": "python3.8",
-        "s3_bucket": "horoscofox-zappa-s3",
+        "s3_bucket": "horoscofox-storage",
         "touch": true,
         "touch_path": "/",
         "use_precompiled_packages": true

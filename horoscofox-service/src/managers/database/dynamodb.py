@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 
 import boto3
+from boto3.dynamodb.conditions import Key
 from src.settings import (DYNAMODB_TABLE_NAME, DYNAMODB_REGION)
 from src.managers.database.exceptions import InvalidHoroscopeFormat, InvalidHoroscopeAttribute
 from datetime import date, datetime
@@ -17,15 +18,22 @@ class Horoscope:
         pass
 
     def get(self, keys):
-        response = self._table.get_item(Key=keys)
-        return response
-
+        response = self._table.query(
+                    KeyConditionExpression=Key('astrologer').eq(keys['astrologer']) & Key('date_start').eq(keys['date_start']),
+                    FilterExpression=Key('sign').eq(keys['sign']))
+        if response['Items']:
+            if response['Items'][0]:
+                return response['Items'][0]
+        raise Exception("Sorry, no horoscope for you") 
+    
     def get_item(self, keys, format=None):
-        return self.get(keys)['Item']
+        return self.get(keys)
 
     def insert(self, item):
         if self._validate_item(item):
-            return self._table.put_item(Item=item)
+            old = self._table.put_item(Item=item, ReturnValues='ALL_OLD')
+            #print(old)
+            return True
         else:
             error_message = ("Expect " + str(self._get_keys+self._put_keys) +
                              " but i've " + str(item.keys()))
