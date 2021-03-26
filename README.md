@@ -8,20 +8,20 @@
 Visit demo at [https://horoscofox.github.io](https://horoscofox.github.io)
 
 ### Start without docker
+#### Pipenv
 We use [Pipenv](https://github.com/pypa/pipenv) to manage dependencies
 
     pip install pipenv
     cd horoscofox-service
     pipenv install 
 
-<!-- 
-### Start with docker 🐳
-*(we **strongly** recommend this way)*
+#### Poetry
 
-    docker-compose build
-    docker-compose up
--->
-
+```sh
+cd horoscofox-service
+poetry install
+```
+ 
 
 ## APIs 🌍
 `<astrologer> / <sign> / <kind>`
@@ -40,12 +40,7 @@ We use [Pipenv](https://github.com/pypa/pipenv) to manage dependencies
 `today` `tomorrow` `month` `info`
 
 ## Tests 🐲
-<!--
-**Using docker**
-
-    docker-compose run backend bash
-    . runtest.sh
--->
+ 
 **Without docker**
 
     . runtest.sh

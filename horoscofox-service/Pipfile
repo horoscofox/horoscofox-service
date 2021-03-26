@@ -16,7 +16,6 @@ horoscofox = {file = "https://github.com/horoscofox/pyhoroscofox/archive/master.
 "boto3" = "*"
 zappa = "*"
 apistar-cors-hooks = "*"
-pip = "==20.4"
 apistar = "==0.5.41"
 
 [requires]
